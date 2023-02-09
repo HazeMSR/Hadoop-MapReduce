@@ -1,5 +1,5 @@
 
-# Hadoop Docker
+# Hadoop Map Reduce
 
 ## 1. Setup
 Download images required for setting up HDFS and spin up necessary containers:
