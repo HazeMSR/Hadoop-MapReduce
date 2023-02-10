@@ -68,6 +68,9 @@ You can access the HDFS namenode’s UI dashboard on your localhost at port 9870
 http://localhost:9870
 ```
 
+![img](documentation_images/hadoop_uigit.PNg)
+
+
 ## Notes
 `docker-compose` creates a docker network that can be found by running `docker network list`, e.g. `docker-hadoop_default`.
 
