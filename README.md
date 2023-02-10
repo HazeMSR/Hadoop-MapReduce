@@ -68,7 +68,7 @@ You can access the HDFS namenode’s UI dashboard on your localhost at port 9870
 http://localhost:9870
 ```
 
-![img](documentation_images/hadoop_uigit.PNg)
+![img](documentation_images/hadoop_ui.png)
 
 
 ## Notes
