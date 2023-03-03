@@ -20,6 +20,7 @@ Now we need to copy the jar files which contains our map-reduce jobs and copy th
 ```
 # Copy the Word Count with the Map Reduce instructions to the container
 docker cp submit/WordCount.jar hadoop_namenode:/tmp/
+docker cp submit/hadoop-mapreduce-examples-2.7.1-sources.jar hadoop_namenode:/tmp/
 
 # Copy the file in order to use it with Word Count program
 docker cp submit/my_input.txt hadoop_namenode:/tmp/
@@ -29,7 +30,7 @@ docker cp submit/my_input.txt hadoop_namenode:/tmp/
 
 Enter inside namenode and open bash:
 ```
-docker exec -it namenode /bin/bash
+docker exec -it hadoop_namenode /bin/bash
 ```
 
 Once you enter the name node in an interactive terminal, use
@@ -38,21 +39,24 @@ the following HDFS commands to interact with the namenode:
 # HDFS list commands to show all the directories in root "/"
 hdfs dfs -ls /
 
-# Create a new directory inside HDFS using mkdir tag.
-hdfs dfs -mkdir -p /user/root
+# HDFS make a directory
+hdfs dfs -mkdir -p /user/root/input
+
+# Move to the tmp folder
+cd /tmp/
 
 # Copy the files to the input path in HDFS.
-hdfs dfs -put my_input.txt /user/root 
+hdfs dfs -put my_input.txt /user/root/input
 
 # Have a look at the content of your input file.
-hdfs dfs -cat my_input.txt /user/root
+hdfs dfs -cat my_input.txt /user/root/input
 ```
 
 ## 3. Run Hadoop Map Reduce Jobs
 Now you can run your map-reduce job using the following command:
 ```
 ## Run map reduce job from the path where you have the jar file.
-hadoop jar tmp/WordCount.jar org.apache.hadoop.examples.WordCount input my_output
+hadoop jar hadoop-mapreduce-examples-2.7.1-sources.jar org.apache.hadoop.examples.WordCount input my_output
 ```
 
 ## 4. Check Your Output
